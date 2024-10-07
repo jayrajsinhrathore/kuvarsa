@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कुंवर जयराज सिंह राठौड़</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f0e1;
+            color: #4b3d3d;
+            overflow: hidden; /* Prevent scrolling during splash screen */
+        }
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("flag.jpg") center/cover no-repeat;
+            z-index: 1000; /* Ensure splash is on top */
+            display: flex;
+            align-items: center; /* Center the text vertically */
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+        #main-content {
+            display: none; /* Hide main content initially */
+        }
+        header {
+            background: #5c3a29;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin: 0;
+            font-size: 3.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px; /* Space below hero */
+        }
+        .hero img {
+            width: 100%; /* Take full width */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 400px; /* Set a max height for better visibility */
+            object-fit: contain; /* Ensure logo fits well */
+        }
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .button, .royal-button {
+            background-color: #5c3a29;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .button:hover, .royal-button:hover {
+            background-color: #4b3d3d;
+            transform: translateY(-2px);
+        }
+        .achievements, .about {
+            background: #eae0d5;
+            padding: 30px; /* Reduced padding */
+            text-align: center;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            transition: transform 0.3s ease;
+        }
+        .achievements:hover, .about:hover {
+            transform: scale(1.02); /* Scale effect on hover */
+        }
+        .achievements h2, .about h2 {
+            color: #5c3a29;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #5c3a29;
+            padding-bottom: 10px;
+        }
+        .achievements p, .about p {
+            font-size: 1.1em; /* Slightly reduced font size */
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns for desktop */
+            gap: 30px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .photo {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 4px solid #5c3a29;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .photo img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: contain; /* Prevent cropping */
+            border-bottom: 4px solid #5c3a29;
+        }
+        .description {
+            padding: 20px;
+            text-align: center;
+        }
+        .description h3 {
+            font-size: 1.8em;
+            color: #5c3a29;
+        }
+        .description p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .social-icons {
+            text-align: center;
+            padding: 20px;
+            background: #eae0d5;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+        }
+        .social-icon {
+            margin: 0 10px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #5c3a29;
+            color: #fff;
+        }
+        .footer-text {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5em;
+            color: #5c3a29;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .hero img {
+                max-height: 200px; /* Smaller for mobile */
+            }
+            .achievements h2, .about h2 {
+                font-size: 2em;
+            }
+            .button, .royal-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .social-icon {
+                width: 30px;
+                height: 30px;
+            }
+            .gallery {
+                grid-template-columns: 1fr; /* One column for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="splash">
+    <!-- Splash content removed -->
+</div>
+
+<div id="main-content">
+    <header>
+        <h1>कुंवर जयराज सिंह राठौड़</h1>
+    </header>
+
+    <div class="hero">
+        <img src="lllogo.png" alt="Your Logo"> <!-- Your logo -->
+    </div>
+
+    <div class="button-container">
+        <button class="button" onclick="toggleAchievements()">Achievements</button>
+    </div>
+
+    <div class="achievements" id="achievements">
+        <h2>Achievements</h2>
+        <p>कुंवर जयराज सिंह ने अपने छोटे से करियर में कई महत्वपूर्ण उपलब्धियाँ हासिल की हैं। वे युवा पीढ़ी के लिए प्रेरणा स्रोत बने हैं। उनका समाज सेवा में योगदान और शिक्षा के क्षेत्र में उत्कृष्टता उन्हें अद्वितीय बनाती है।</p>
+    </div>
+
+    <div class="gallery" id="gallery">
+        <div class="photo">
+            <img src="jj.jpg" alt="Event Title 1">
+            <div class="description">
+                <h3>Royal Prince of Kolu</h3>
+                <p>The young royal of Kolu is dedicated to community service and cultural heritage. He inspires others through his commitment to his people and traditions.</p>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="hhorse.jpg" alt="Event Title 2">
+            <div class="description">
+                <h3>Equestrian</h3>
+                <p>Highlighting talent in horseback riding, this event fostered sportsmanship and community spirit among youth.</p>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="help.jpg" alt="Event Title 3">
+            <div class="description">
+                <h3>Educational Workshop</h3>
+                <p>This workshop aimed at empowering youth through education, encouraging them to pursue their dreams and aspirations.</p>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="me.jpg" alt="Event Title 4">
+            <div class="description">
+                <h3>Cultural Festival</h3>
+                <p>This vibrant festival celebrated local traditions and arts, bringing together the community in a joyful celebration.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about">
+        <h2>About कुंवर जयराज सिंह राठौड़</h2>
+        <p>कुंवर जयराज सिंह राठौड़,  पाबूजी राठौड़ के वंशज हैं। वे कोलू क्षेत्र के युवा राजकुमार हैं। जयराज सिंह का लक्ष्य अपने समुदाय की सेवा करना और अपने पूर्वजों की परंपराओं को आगे बढ़ाना है। वे अपनी शिक्षा और सामाजिक कार्यों में सक्रिय रूप से भाग लेते हैं, जिससे वे नई पीढ़ी के लिए प्रेरणा स्रोत बनते हैं। उनका समर्पण और नेतृत्व गुण उन्हें एक आदर्श बनाते हैं।</p>
+    </div>
+
+    <div class="footer-text">
+        <p>कुंवर जयराज सिंह राठौड़</p>
+    </div>
+
+    <div class="social-icons">
+        <h2 style="margin-bottom: 10px;">Connect with कुंवर जयराज सिंह</h2>
+        <a href="https://www.instagram.com/jayrajsinh__rathore?igsh=MXVjb2dqdXNyenFhag==" target="_blank">
+            <img class="social-icon" src="image-removebg-preview.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/jayraj.rathod.5473894?mibextid=LQQJ4d" target="_blank">
+            <img class="social-icon" src="fbfb.png" alt="Facebook">
+        </a>
+        <a href="mailto:Jayraj4743@gmail.com">
+            <img class="social-icon" src="MAIL-removebg-preview.png" alt="Email">
+        </a>
+    </div>
+
+    <div class="button-container">
+        <a href="contact.html">
+            <button class="royal-button">Contact Us</button>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 कुंवर जयराज सिंह राठौड़. सभी अधिकार सुरक्षित।</p>
+    </footer>
+</div>
+
+<script>
+    window.onload = function() {
+        const splash = document.getElementById('splash');
+        const mainContent = document.getElementById('main-content');
+
+        // Hide splash screen and show main content after 1 second
+        setTimeout(() => {
+            splash.style.opacity = 0;
+            setTimeout(() => {
+                splash.style.display = 'none';
+                mainContent.style.display = 'block';
+                document.body.style.overflow = 'auto'; // Allow scrolling
+            }, 1000); // Time for fade-out
+        }, 1000); // Duration for splash screen
+    };
+
+    function toggleAchievements() {
+        const achievements = document.getElementById('achievements');
+        achievements.style.display = achievements.style.display === 'block' ? 'none' : 'block';
+        achievements.style.transition = "all 0.5s ease"; // Smooth transition
+    }
+</script>
+
+</body>
+</html>

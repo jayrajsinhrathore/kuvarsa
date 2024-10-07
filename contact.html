@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कुंवर जयराज सिंह राठौड़</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f0e1;
+            color: #4b3d3d;
+        }
+        header {
+            background: #5c3a29;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .hero {
+            background-image: url('hero-image.jpg');
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            filter: brightness(70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease-in;
+        }
+        .hero h1 {
+            color: #fff;
+            font-size: 2.5em;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        .contact-form {
+            background: #eae0d5;
+            padding: 40px;
+            text-align: center;
+            margin: 30px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+        }
+        .contact-form h2 {
+            color: #5c3a29;
+            margin-bottom: 20px;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #6a5acd;
+            outline: none;
+        }
+        .contact-form button {
+            background-color: #eae0d5; /* Match the background color */
+            color: #5c3a29; /* Text color */
+            border: 2px solid #5c3a29; /* Border matching header color */
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            margin-top: 15px;
+        }
+        .contact-form button:hover {
+            background-color: #5c3a29; /* Darker background on hover */
+            color: white; /* Change text color on hover */
+        }
+        .thank-you-message {
+            display: none;
+            margin-top: 20px;
+            color: #28a745;
+            font-size: 1.2em;
+        }
+        @media (max-width: 600px) {
+            .contact-form {
+                width: 90%;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>कुंवर जयराज सिंह राठौड़</h1>
+</header>
+
+<div class="hero">
+    <h1>Celebrating Achievements</h1>
+</div>
+
+<div class="contact-form">
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://formspree.io/f/meoqjlnn" method="POST">
+        <label>
+            Your Name:
+            <input type="text" name="name" required placeholder="Enter your name">
+        </label>
+        <label>
+            Your Email:
+            <input type="email" name="email" required placeholder="Enter your email">
+        </label>
+        <label>
+            Contact Number (optional):
+            <input type="tel" name="contact" placeholder="Enter your contact number">
+        </label>
+        <label>
+            Special Requests:
+            <textarea name="special_requests" placeholder="Any special requests?"></textarea>
+        </label>
+        <button type="submit">Send</button>
+    </form>
+    <div class="thank-you-message" id="thankYouMessage"></div>
+</div>
+
+<footer>
+    <p>&copy; 2024 कुंवर जयराज सिंह राठौड़. सभी अधिकार सुरक्षित।</p>
+</footer>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const name = form.name.value;
+        thankYouMessage.textContent = `Thank you ${name} जी for contacting कुंवर जयराज सिंह राठौड़, our team will contact you shortly.`;
+        thankYouMessage.style.display = 'block';
+        
+        // Submit the form to Formspree
+        setTimeout(() => {
+            form.submit();
+        }, 2000); // Delay the submission for the thank you message to display
+    });
+</script>
+
+</body>
+</html>
